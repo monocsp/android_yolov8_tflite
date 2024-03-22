@@ -32,7 +32,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"> <!-- 커스텀 배경 설정 -->
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"> <!-- 커스텀 배경 설정 -->
         </LinearLayout>
 
         <TextView
@@ -49,7 +50,7 @@
             android:layout_marginBottom="23dp"
             android:text="가이드안에 맞추어\n손가락의 지문을 인식시켜주세요."
             android:textColor="#ffffff"
-            android:textDirection=""
+
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

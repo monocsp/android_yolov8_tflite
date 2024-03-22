@@ -50,26 +50,26 @@ class Detector(
         val options = Interpreter.Options()
 
 
-//        var nnApiDelegate: NnApiDelegate? = null
-//// Initialize interpreter with NNAPI delegate for Android Pie or above
-//// Initialize interpreter with NNAPI delegate for Android Pie or above
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-//            nnApiDelegate = NnApiDelegate()
-//            options.addDelegate(nnApiDelegate)
-//            runtimeMode = "NNAPI Delegate"
-//        }else{
-//            if (CompatibilityList().isDelegateSupportedOnThisDevice) {
-//                // if the device has a supported GPU, add the GPU delegate
-//                val delegateOptions: GpuDelegate.Options = CompatibilityList().bestOptionsForThisDevice
-//                val gpuDelegate = GpuDelegate(delegateOptions)
-//                options.addDelegate(gpuDelegate)
-//                runtimeMode = "GPU Delegate"
-//            } else {
-//                // if the GPU is not supported, run on 4 threads
-//                options.setNumThreads(4)
-//            }
-//        }
-        options.setNumThreads(4)
+        var nnApiDelegate: NnApiDelegate? = null
+// Initialize interpreter with NNAPI delegate for Android Pie or above
+// Initialize interpreter with NNAPI delegate for Android Pie or above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            nnApiDelegate = NnApiDelegate()
+            options.addDelegate(nnApiDelegate).setNumThreads(4)
+            runtimeMode = "NNAPI Delegate"
+        }else{
+            if (CompatibilityList().isDelegateSupportedOnThisDevice) {
+                // if the device has a supported GPU, add the GPU delegate
+                val delegateOptions: GpuDelegate.Options = CompatibilityList().bestOptionsForThisDevice
+                val gpuDelegate = GpuDelegate(delegateOptions)
+                options.addDelegate(gpuDelegate)
+                runtimeMode = "GPU Delegate"
+            } else {
+                // if the GPU is not supported, run on 4 threads
+                options.setNumThreads(4)
+            }
+        }
+//        options.setNumThreads(4)
         interpreter = Interpreter(model, options)
 
         val inputShape = interpreter?.getInputTensor(0)?.shape() ?: return
