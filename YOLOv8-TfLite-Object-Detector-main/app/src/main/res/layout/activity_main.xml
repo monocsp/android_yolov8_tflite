@@ -65,6 +65,12 @@
         app:layout_constraintEnd_toStartOf="@+id/inferenceTime"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/fragmentFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
+
     <!--    <ImageView-->
 <!--        android:id="@+id/ivTop"-->
 <!--        android:layout_width="match_parent"-->

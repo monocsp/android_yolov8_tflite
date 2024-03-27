@@ -11,19 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|top"
-            android:background="@android:color/transparent"
-            android:padding="8dp"
-            android:text="X"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -31,46 +18,55 @@
             android:layout_height="130dp"
             android:layout_gravity="center"
             android:background="@drawable/finger_guide_square"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"> <!-- 커스텀 배경 설정 -->
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/guide_close"
+            android:src="@drawable/guide_close"
+            android:layout_width="35dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="315dp"
+            android:layout_marginTop="54dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal"> <!-- 커스텀 배경 설정 -->
-        </LinearLayout>
+            android:layout_height="35dp"/>
 
         <ImageView
             android:id="@+id/rounded_arrow"
             android:layout_width="51.34dp"
             android:layout_height="52.71dp"
-            android:layout_marginEnd="81dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginStart="235dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="5dp"
             android:src="@drawable/round_arrow"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/guide_finger"
             android:layout_width="549dp"
             android:layout_height="288dp"
-            android:layout_marginStart="188dp"
-            android:layout_marginTop="275dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="-26dp"
+            android:layout_marginBottom="-133dp"
             android:src="@drawable/guide_finger_img"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"
-            tools:layout_editor_absoluteX="189dp"
-            tools:layout_editor_absoluteY="170dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/guide_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
+            android:gravity="center"
             android:text="손가락 지문 촬영시\n1개만 인식하여 주셔야 합니다."
 
             android:textColor="#ffffff"
@@ -82,12 +78,14 @@
             android:id="@+id/guide_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
+            android:layout_marginEnd="120dp"
             android:layout_marginBottom="23dp"
+            android:gravity="center"
             android:text="가이드안에 맞추어\n손가락의 지문을 인식시켜주세요."
-            android:textColor="#ffffff"
 
+            android:textColor="#ffffff"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,7 +1,7 @@
 package com.surendramaran.yolov8tflite
 
 import android.Manifest
-import android.R
+
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
@@ -18,11 +18,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.surendramaran.yolov8tflite.Constants.LABELS_PATH
 import com.surendramaran.yolov8tflite.Constants.MODEL_PATH
 import com.surendramaran.yolov8tflite.databinding.ActivityMainBinding
+
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+
 
 
 class MainActivity : AppCompatActivity(), Detector.DetectorListener {
@@ -39,19 +42,37 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 
     private lateinit var cameraExecutor: ExecutorService
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        startDetect()
+
 //        detector = Detector(baseContext, MODEL_PATH, LABELS_PATH, this)
 //        detector.setup()
 
         if (allPermissionsGranted()) {
+            startDetect()
             startCamera()
 
-            val fragment: Fragment = MainFragment()
-            getSupportFragmentManager.begintransaction.replace(R.id.fragment_black, fragment).commit
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,android.R.anim.fade_in, android.R.anim.fade_out)
+            transaction.add(
+                R.id.fragmentFrame,
+                GuideFragment()
+            )
+            transaction.commit()
+
+
+//            if (savedInstanceState == null) {
+//                supportFragmentManager.commit {
+//                    setReorderingAllowed(true)
+//                    add<ExampleFragment>(R.id.fragment_blank)
+//                }
+//            }
+//            val fragment: Fragment = MainFragment()
+//            getSupportFragmentManager.begintransaction.replace(R.id.fragment_black, fragment).commit
 
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
@@ -62,6 +83,8 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
         binding.modeName.setOnClickListener{
 
         }
+
+
     }
 
     private fun startCamera() {
