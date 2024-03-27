@@ -1,6 +1,7 @@
 package com.surendramaran.yolov8tflite
 
 import android.Manifest
+import android.R
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
@@ -16,11 +17,13 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.surendramaran.yolov8tflite.Constants.LABELS_PATH
 import com.surendramaran.yolov8tflite.Constants.MODEL_PATH
 import com.surendramaran.yolov8tflite.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+
 
 class MainActivity : AppCompatActivity(), Detector.DetectorListener {
     private lateinit var binding: ActivityMainBinding
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 
         if (allPermissionsGranted()) {
             startCamera()
+
+            val fragment: Fragment = MainFragment()
+            getSupportFragmentManager.begintransaction.replace(R.id.fragment_black, fragment).commit
+
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }

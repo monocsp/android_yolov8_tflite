@@ -21,7 +21,9 @@
             android:text="X"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="323dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -36,11 +38,45 @@
             android:orientation="horizontal"> <!-- 커스텀 배경 설정 -->
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/rounded_arrow"
+            android:layout_width="51.34dp"
+            android:layout_height="52.71dp"
+            android:layout_marginEnd="81dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/round_arrow"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/guide_finger"
+            android:layout_width="549dp"
+            android:layout_height="288dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginTop="275dp"
+            android:src="@drawable/guide_finger_img"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:text="@string/hello_blank_fragment"
+            tools:layout_editor_absoluteX="189dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <TextView
+            android:id="@+id/guide_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="손가락 지문 촬영시\n1개만 인식하여 주셔야 합니다."
+
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/guide_text1"
