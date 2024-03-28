@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="camera_iris">camera_iris</string>
+    <string name="speed">Speed</string>
+    <string name="_1_250">1/250</string>
+    <string name="camera_iso_img">camera_iso_img</string>
 </resources>

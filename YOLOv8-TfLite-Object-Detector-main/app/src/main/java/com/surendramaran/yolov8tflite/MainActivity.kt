@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 //        detector.setup()
 
         if (allPermissionsGranted()) {
-            startDetect()
+//            startDetect()
             startCamera()
 
             val transaction = supportFragmentManager.beginTransaction()
@@ -80,9 +80,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        binding.modeName.setOnClickListener{
 
-        }
 
 
     }
@@ -145,7 +143,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
                 matrix, true
             )
 
-            detector.detect(rotatedBitmap)
+//            detector.detect(rotatedBitmap)
         }
 
         cameraProvider.unbindAll()
@@ -205,9 +203,9 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
             inferenceTimes.add(inferenceTime)
             val inferenceTotalTime = inferenceTimes.sum()
             val average = if (inferenceTimes.isNotEmpty()) inferenceTotalTime.toDouble() / inferenceTimes.size else 0.0
-            binding.modeName.text = "${mode}ms"
-            binding.meanText.text = "평균 : "+String.format("%.1f", average) + "ms"
-            binding.inferenceTime.text = "${inferenceTime}ms"
+//            binding.modeName.text = "${mode}ms"
+//            binding.meanText.text = "평균 : "+String.format("%.1f", average) + "ms"
+//            binding.inferenceTime.text = "${inferenceTime}ms"
 
 
 
