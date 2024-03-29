@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/camera_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@android:color/transparent">
 
-    <LinearLayout
-        android:id="@+id/fragmentFrame"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
 
         <androidx.camera.view.PreviewView
@@ -39,131 +31,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
-            <LinearLayout
-                android:id="@+id/topFrame"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
 
-
-                android:paddingEnd="20dp"
-                app:layout_constraintBaseline_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/camera_iris_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/font"
-                        android:textColor="#ffffff"
-                        android:textFontWeight="700"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:targetApi="p"
-                        tools:text="f/1.8" />
-
-                    <Space
-                        android:layout_width="12dp"
-                        android:layout_height="12dp" />
-
-                    <ImageView
-                        android:id="@+id/camera_iris"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/camera_iris"
-                        android:src="@drawable/camera_iris" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:gravity="center"
-                        android:text="@string/speed"
-                        android:textColor="#ffffff"
-                        android:textFontWeight="300"
-                        android:textSize="12sp"
-                        tools:targetApi="p" />
-
-                    <TextView
-                        android:id="@+id/shutter_speed_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:gravity="center"
-                        android:text="@string/_1_250"
-                        android:textColor="#ffffff"
-                        android:textFontWeight="700"
-                        android:textSize="16sp"
-                        tools:targetApi="p" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:gravity="center"
-                        android:text="WB"
-                        android:textColor="#ffffff"
-                        android:textFontWeight="300"
-                        android:textSize="12sp"
-                        tools:targetApi="p" />
-
-                    <TextView
-                        android:id="@+id/wb_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:gravity="center"
-                        android:text="8300K"
-                        android:textColor="#ffffff"
-                        android:textFontWeight="700"
-                        android:textSize="16sp"
-                        tools:targetApi="p" />
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
 
         </androidx.camera.view.PreviewView>
+    <LinearLayout
+        android:id="@+id/fragmentFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/camera_frag_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"/>
 
 
-        <LinearLayout
-            android:id="@+id/bottomFrame"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
 
-            android:orientation="horizontal" />
     </LinearLayout>
 
 
@@ -184,40 +70,7 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent"/>-->
 
-    <LinearLayout
 
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentFrame"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ISO"
-            android:textSize="12sp"
-            android:fontFamily="@font/font"
-            android:textFontWeight="500"
-            android:textColor="#ffffff"
-
-            />
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="10dp"/>
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/camera_iso_img"
-            android:src="@drawable/camera_iso" />
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

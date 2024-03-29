@@ -19,9 +19,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import com.surendramaran.yolov8tflite.Constants.LABELS_PATH
 import com.surendramaran.yolov8tflite.Constants.MODEL_PATH
 import com.surendramaran.yolov8tflite.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -55,14 +58,13 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
         if (allPermissionsGranted()) {
 //            startDetect()
             startCamera()
+//
+            startGuideFragment()
 
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,android.R.anim.fade_in, android.R.anim.fade_out)
-            transaction.add(
-                R.id.fragmentFrame,
-                GuideFragment()
-            )
-            transaction.commit()
+            lifecycleScope.launch {
+                delay(5000)
+                startCameraFragment()
+            }
 
 
 //            if (savedInstanceState == null) {
@@ -83,6 +85,21 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 
 
 
+    }
+
+    private fun startGuideFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            android.R.anim.fade_in,
+            android.R.anim.fade_out,
+            android.R.anim.fade_in,
+            android.R.anim.fade_out
+        )
+        transaction.add(
+            R.id.fragmentFrame,
+            GuideFragment()
+        )
+        transaction.commit()
     }
 
     private fun startCamera() {
@@ -122,7 +139,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
                     imageProxy.height,
                     Bitmap.Config.ARGB_8888
                 )
-            imageProxy.use { bitmapBuffer.copyPixelsFromBuffer(imageProxy.planes[0].buffer) }
+            imageProxy.use { bitmapBuffer.copyPixelsFromBufferㅋ(imageProxy.planes[0].buffer) }
             imageProxy.close()
 
             val matrix = Matrix().apply {
@@ -224,6 +241,19 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
     fun startDetect(){
         detector = Detector(baseContext, MODEL_PATH, LABELS_PATH, this)
         detector.setup()
+
+    }
+
+    private fun startCameraFragment(){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,android.R.anim.fade_in, android.R.anim.fade_out)
+        transaction.replace(
+            R.id.camera_frag_frame,
+            CameraLayerFrag()
+        )
+        transaction.commit()
+
+
 
     }
 

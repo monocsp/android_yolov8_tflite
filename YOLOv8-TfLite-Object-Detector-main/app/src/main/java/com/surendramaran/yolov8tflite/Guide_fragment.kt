@@ -69,7 +69,7 @@ class GuideFragment : Fragment() {
 
     private fun autoClosed(){
         lifecycleScope.launch {
-            delay(3000)
+            delay(5000)
             closeThisFragment()
         }
 
