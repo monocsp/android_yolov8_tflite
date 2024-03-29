@@ -52,19 +52,19 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        detector = Detector(baseContext, MODEL_PATH, LABELS_PATH, this)
-//        detector.setup()
+        detector = Detector(baseContext, MODEL_PATH, LABELS_PATH, this)
+        detector.setup()
 
         if (allPermissionsGranted()) {
-//            startDetect()
+            startDetect()
             startCamera()
 //
             startGuideFragment()
 
-            lifecycleScope.launch {
-                delay(5000)
+//            lifecycleScope.launch {
+//                delay(5000)
                 startCameraFragment()
-            }
+//            }
 
 
 //            if (savedInstanceState == null) {
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
                     imageProxy.height,
                     Bitmap.Config.ARGB_8888
                 )
-            imageProxy.use { bitmapBuffer.copyPixelsFromBufferㅋ(imageProxy.planes[0].buffer) }
+            imageProxy.use { bitmapBuffer.copyPixelsFromBuffer(imageProxy.planes[0].buffer) }
             imageProxy.close()
 
             val matrix = Matrix().apply {
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
                 matrix, true
             )
 
-//            detector.detect(rotatedBitmap)
+            detector.detect(rotatedBitmap)
         }
 
         cameraProvider.unbindAll()
@@ -225,9 +225,8 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
 //            binding.inferenceTime.text = "${inferenceTime}ms"
 
 
-
-
             binding.overlay.apply {
+
                 setResults(boundingBoxes)
                 invalidate()
             }
@@ -247,7 +246,7 @@ class MainActivity : AppCompatActivity(), Detector.DetectorListener {
     private fun startCameraFragment(){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out,android.R.anim.fade_in, android.R.anim.fade_out)
-        transaction.replace(
+        transaction.add(
             R.id.camera_frag_frame,
             CameraLayerFrag()
         )

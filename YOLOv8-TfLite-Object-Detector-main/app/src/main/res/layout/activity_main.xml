@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@android:color/transparent">
+        android:background="@android:color/transparent"/>
 
     <LinearLayout
         android:id="@+id/camera_frag_frame"
@@ -47,10 +47,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@android:color/transparent"/>
-
-
-
-    </LinearLayout>
 
 
 
